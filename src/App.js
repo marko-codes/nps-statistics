@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Country } from "./components/Country";
 import Gauge from "./components/Gauge";
 import Questions from "./components/Questions";
