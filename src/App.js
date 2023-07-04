@@ -109,7 +109,7 @@ const fetchCountryNps = async () => {
 
 };
 
-useEffect(() => {
+useState(() => {
 
   fetchQuarterYear();
   fetchImprovements();
