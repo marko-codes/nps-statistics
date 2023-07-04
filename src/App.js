@@ -13,7 +13,7 @@ function App() {
   const [countryNps, setCountryNps] = useState([]);
   const [quarterlyNps, setQuarterlyNps] = useState([]);
 
-  const urlApi = process.env.REACT_APP_API_KEY;
+  var urlApi = process.env.REACT_APP_API_KEY;
 
   const fetchQuestions = async () => {
 
