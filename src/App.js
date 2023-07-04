@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Country } from "./components/Country";
 import Gauge from "./components/Gauge";
 import Questions from "./components/Questions";
@@ -109,7 +109,7 @@ const fetchCountryNps = async () => {
 
 };
 
-useState(() => {
+useEffect(() => {
 
   fetchQuarterYear();
   fetchImprovements();
@@ -118,7 +118,7 @@ useState(() => {
   fetchCountryNps();
   fetchQuarterlyNps();
 
-},[])
+},[]);
 
   return (
     <div className=" flex flex-col w-full h-full items-center justify-start bg-gray-50 pb-32">
