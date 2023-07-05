@@ -13,6 +13,7 @@ function App() {
   const [countryNps, setCountryNps] = useState([]);
   const [quarterlyNps, setQuarterlyNps] = useState([]);
 
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
           console.log("Error fetching Questions:", error);
         }
       };
-  
+
       const fetchQuarterlyNps = async () => {
         try {
           const response = await fetch(urlApi + "/getAllQuarterlyNps");
@@ -39,7 +40,7 @@ function App() {
           console.log("Error fetching QuarterlyNps:", error);
         }
       };
-  
+
       const fetchImprovements = async () => {
         try {
           const response = await fetch(urlApi + "/getAllImprovements");
@@ -49,7 +50,7 @@ function App() {
           console.log("Error fetching Improvements:", error);
         }
       };
-  
+
       const fetchCountries = async () => {
         try {
           const response = await fetch(urlApi + "/getAllCountries");
@@ -59,7 +60,7 @@ function App() {
           console.log("Error fetching Countries:", error);
         }
       };
-  
+
       const fetchCountryNps = async () => {
         try {
           const response = await fetch(urlApi + "/getAllCountryQuarterly");
@@ -69,7 +70,7 @@ function App() {
           console.log("Error fetching CountryNps:", error);
         }
       };
-  
+
       const fetchQuarterYear = async () => {
         try {
           const response = await fetch(urlApi + "/getAllQuarterYear");
@@ -81,7 +82,7 @@ function App() {
           console.log("Error fetching QuarterYear", error);
         }
       };
-  
+
       await Promise.all([
         fetchQuestions(),
         fetchQuarterlyNps(),
@@ -89,32 +90,51 @@ function App() {
         fetchCountries(),
         fetchCountryNps(),
         fetchQuarterYear(),
-      ]);
+      ]).then(
+        setTimeout(() => {
+          setLoading(false)
+      }, 1000)
+      );
     };
-  
+
     fetchData();
   }, []);
 
   return (
     <div className=" flex flex-col w-full h-full items-center justify-start bg-gray-50 pb-32">
       <div className="flex flex-col items-center justify-center m-8 mt-16">
-      <h1 className="text-3xl font-semibold">
-        Nps Statistics
-      </h1>
-      <p>(Net promoter score)</p>
+        <h1 className="text-3xl font-semibold">
+          Nps Statistics
+        </h1>
+        <p>(Net promoter score)</p>
 
       </div>
-      
-      <Gauge quarterYear = {quarterYear} quarterlyNps = {quarterlyNps} />
+      <div id="menu" class={`fixed z-90 w-screen h-screen flex justify-center items-center bg-gray-900 opacity-${loading ? `100` : `0`} duration-700`}>
+        <div className="flex flex-col items-center justify-center gap-10">
+          <div className=" text-4xl text-white"> NPS Statistics</div>
+        <div
+          class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status">
+          <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Loading...</span>
+
+        </div>
+        </div>
+
+      </div>
+
+
+      <Gauge quarterYear={quarterYear} quarterlyNps={quarterlyNps} />
       <h1 className="text-3xl font-semibold m-8 mt-16">
         How Can We Improve?
       </h1>
-      <Questions quarterYear = {quarterYear} questions = {questions} improvements = {improvements} />
+      <Questions quarterYear={quarterYear} questions={questions} improvements={improvements} />
       <h1 className="text-3xl font-semibold m-8 mt-16">
         NPS scores by country
       </h1>
       <div className="flex flex-row items-center w-11/12 justify-center gap-2 h-96">
-        <Country countries = {countries} countryNps ={countryNps} quarterYear = {quarterYear}/>
+        <Country countries={countries} countryNps={countryNps} quarterYear={quarterYear} />
       </div>
     </div>
 
