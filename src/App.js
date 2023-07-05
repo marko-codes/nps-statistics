@@ -109,14 +109,14 @@ function App() {
         <p>(Net promoter score)</p>
 
       </div>
-      <div id="menu" class={`fixed z-90 w-screen h-screen flex justify-center items-center bg-gray-900 opacity-${loading ? `100` : `0`} duration-700`}>
+      <div id="menu" className={`fixed z-90 w-screen h-screen flex justify-center items-center bg-gray-900 opacity-${loading ? `100` : `0`} duration-700`}>
         <div className="flex flex-col items-center justify-center gap-10">
           <div className=" text-4xl text-white"> NPS Statistics</div>
         <div
-          class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
           role="status">
           <span
-            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
           >Loading...</span>
 
         </div>
