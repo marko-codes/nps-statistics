@@ -17,7 +17,7 @@ function App() {
 
 
   useEffect(() => {
-    
+
     var urlApi = process.env.REACT_APP_API_KEY;
 
     const fetchData = async () => {
@@ -92,7 +92,7 @@ function App() {
         fetchQuarterYear(),
       ]).then(
         setTimeout(() => {
-          setLoading(false)
+          setLoading(false);
       }, 1000)
       );
     };
@@ -109,7 +109,7 @@ function App() {
         <p>(Net promoter score)</p>
 
       </div>
-      <div id="menu" className={`fixed z-90 w-screen h-screen flex justify-center items-center bg-gray-900 opacity-${loading ? `100` : `0`} duration-700`}>
+      <div id="menu" className={`fixed z-90 w-screen h-screen flex justify-center items-center bg-gray-900 ${loading ? `opacity-100` : `opacity-0`} duration-700`}>
         <div className="flex flex-col items-center justify-center gap-10">
           <div className=" text-4xl text-white"> NPS Statistics</div>
         <div
