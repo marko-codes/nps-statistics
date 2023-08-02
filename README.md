@@ -1,4 +1,4 @@
-# Nps Statistics Frontend
+# Nps Statistics Frontend part
 
 This is a frontend part of the NPS Statistics application.
 Application is part of a "SAAS" project.
